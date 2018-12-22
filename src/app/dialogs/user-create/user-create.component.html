@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Nuevo Usuario</h1>
+<form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content fxLayout="column" fxLayoutAlign="space-around">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" type="text" [formControl]="form.controls['name']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" type="text" [formControl]="form.controls['email']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Contraseña" type="text" [formControl]="form.controls['password']" required>
+      <a mat-button matSuffix mat-icon-button (click)="passwordAutogen()">
+        <mat-icon>lock</mat-icon>
+      </a>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Confirmar contraseña" type="text" [formControl]="form.controls['checkpassword']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Telefono" type="tel" [formControl]="form.controls['phone']" required>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions fxLayout="column" fxLayoutAlign="space-around">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Añadir</button>
+  </div>
+</form>

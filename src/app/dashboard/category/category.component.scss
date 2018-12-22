@@ -1,0 +1,52 @@
+.add-title {
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 0.05em;
+  line-height: 21px;
+  text-align: left;
+  color: #43425d;
+  text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td,
+  th {
+    width: 25%;
+  }
+  
+
+@media (min-width: 960px) {
+  .right-container {
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .left-container {
+    position: absolute;
+    max-height: 80vh;
+
+    .container {
+      height: 100%;
+
+      .table-style {
+        max-height: 50%;
+        overflow-y: auto;
+      }
+    }
+  }
+
+}

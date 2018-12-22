@@ -1,0 +1,31 @@
+@import "scss/material.variables";
+@import "scss/material.themes";
+@import "scss/mixins/bi-app/bi-app-ltr";
+// Core Variables and Mixins
+@import "scss/app.variables";
+@import "scss/mixins";
+// Core Styles
+@import "scss/core";
+@import "scss/material";
+@import "scss/utilities/utilities";
+.mat-sidenav-content {
+    background-color: #00B4DC;
+    background-image: url( "../images/wallpaper.png" );
+    background-position: center center;
+    background-repeat: repeat;
+}
+
+.mat-sidenav {
+    background-color: #363839;
+    .mat-list-item {
+        color: #fff;
+    }
+}
+
+.mat-toolbar {
+    background-color: #fff;
+}
+
+.ps {
+    padding: 0!important;
+}

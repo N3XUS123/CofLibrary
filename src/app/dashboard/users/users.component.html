@@ -1,0 +1,54 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center">
+  <div class="mt-3">
+    <input class="search-bar" matInput placeholder="Buscar por email..." [(ngModel)]="emailFilter.email">
+  </div>
+  <div fxLayout.gt-xs="row wrap" fxLayout="column" fxLayoutAlign="start">
+    <div *ngFor="let user of users?.slice().reverse() | filterBy: emailFilter | paginate: config">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span>{{ user.name }}</span>
+            <a mat-icon-button [matMenuTriggerFor]="menu" style="position:absolute; right: 0px; top: 2px;">
+              <mat-icon>more_vert</mat-icon>
+            </a>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openDialogEdit(user)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="openDialogDelete(user)">
+                <mat-icon>delete</mat-icon>
+                <span>Eliminar</span>
+              </button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p class="pt-1">
+            <mat-icon class="text-muted">email</mat-icon> <span> {{ user.email }} </span>
+          </p>
+          <p>
+            <mat-icon class="text-muted">phone</mat-icon> <span> {{ user.phone }} </span> <span *ngIf="!user.phone">
+              No
+              asignado </span>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDialogResources(user)" class="w-100">Gestionar recursos</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<button mat-mini-fab color="green" class="pagination-button" (click)="last()" style="right: 80px" *ngIf="config.currentPage > 1">
+  <mat-icon class="mat-24 mat-text-white">keyboard_arrow_left</mat-icon>
+</button>
+<button mat-mini-fab color="green" class="pagination-button" (click)="next()" *ngIf="config.currentPage < users?.length / config.itemsPerPage">
+  <mat-icon class="mat-24 mat-text-white">keyboard_arrow_right</mat-icon>
+</button>
+<button mat-fab color="warn" class="mat-fab-bottom-right" (click)="openDialogCreate()" style="z-index: 9999;">
+  <mat-icon class="mat-24">add</mat-icon>
+</button>

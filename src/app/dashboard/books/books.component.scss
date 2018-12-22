@@ -1,0 +1,76 @@
+#floatingButton {
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    z-index: 9999999;
+}
+
+.mat-card {
+    width:260px; 
+    height:160px; 
+    overflow:hidden;
+    .mat-card-content {
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+}
+
+.container {
+    margin: 20px auto;
+    width: 90%;
+}
+
+@media only screen and (min-width: 600px) {
+    .mat-card-actions {
+        bottom: 2px;
+        left: 18px;
+        width: 98%;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .mat-card-actions {
+        bottom: 2px;
+        left: 10px;
+        width: 98%;
+    }
+}
+
+.mycustomchip {
+    display: inline-block;
+    padding: 0 15px;
+    height: 20px;
+    font-size: 10px;
+    border-radius: 25px;
+    line-height: 20px;
+    background-color: #f1f1f1;
+    color: #424242;
+}
+
+.search-bar{
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    height: 14px;
+    width: 400px;
+    max-width: 47%;
+    border:1px solid #eaeaea;
+    outline:none;
+}
+.search-bar:hover{
+    border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+.search-bar:focus{
+    border-color:#4d90fe;
+}
+
+.pagination-button {
+    bottom: auto;
+    right: 20px;
+    top: 5rem;
+    left: auto;
+    position: fixed;
+    color: #fff;
+    z-index: 9999;
+  }

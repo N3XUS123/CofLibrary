@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Nuevo recurso</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content fxLayout="column" fxLayoutAlign="space-around">
+    <mat-form-field>
+      <input matInput placeholder="Titulo" type="text" [formControl]="form.controls['title']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Autor" type="text" [formControl]="form.controls['autor']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Año" type="number" [formControl]="form.controls['anyo']" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Url" type="text" [formControl]="form.controls['url']">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Contenido" type="text" [formControl]="form.controls['content']" required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Tipo" [formControl]="form.controls['typeId']" required>
+        <mat-option *ngFor="let t of types" [value]="t.id">
+          {{t.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Categoría" [formControl]="form.controls['categoryId']" required>
+        <mat-optgroup *ngFor="let sc of superCategories" [label]="sc.name" [disabled]="sc.disabled">
+          <mat-option *ngFor="let c of sc.categories" [value]="c.id">
+            {{c.name}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions fxLayout="column" fxLayoutAlign="space-around">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Añadir</button>
+  </div>
+</form>

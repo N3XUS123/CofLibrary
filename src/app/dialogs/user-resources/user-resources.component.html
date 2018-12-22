@@ -1,0 +1,14 @@
+<h1 mat-dialog-title *ngIf="user">Recursos de {{user.name}}</h1>
+<div mat-dialog-content>
+  <mat-list *ngIf="user">
+    <h4 *ngIf="!user.recursos[0]">Este usuario no tiene ningún recurso ahora mismo.</h4>
+    <div *ngFor="let resource of user.recursos; index as i">
+        <mat-divider *ngIf="!i == 0"></mat-divider>
+      <mat-list-item>
+        <mat-icon mat-list-icon>filter_b_and_w</mat-icon>
+        <h4 style="overflow-x:hidden">{{resource.title}} </h4>
+        <button mat-flat-button color="warn" (click)="openDialogReturn(resource)" style="margin-left: auto">Devolver</button>
+      </mat-list-item>
+    </div>
+  </mat-list>
+</div>

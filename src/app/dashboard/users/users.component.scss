@@ -1,0 +1,51 @@
+.container {
+  margin: 20px auto;
+  width: 90%;
+}
+
+.mat-card-actions {
+  margin: 0 auto;
+}
+
+.mat-card-content p span {
+  vertical-align: top;
+}
+
+.mat-card {
+  width: 263px;
+  height: 164px;
+  overflow: hidden;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.pagination-button {
+  bottom: auto;
+  right: 20px;
+  top: 5rem;
+  left: auto;
+  position: fixed;
+  color: #fff;
+  z-index: 9999;
+}
+
+
+.search-bar{
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    height: 20px;
+    width: 500px;
+    max-width: 80%;
+    border:1px solid #eaeaea;
+    outline:none;
+}
+.search-bar:hover{
+    border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+.search-bar:focus{
+    border-color:#4d90fe;
+}

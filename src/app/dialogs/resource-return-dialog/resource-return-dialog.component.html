@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>¿Marcar {{ resource.title }} como devuelto?</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <p>Para confirmar inserte "DEVOLVER" todo en mayusculas y pulse Borrar.</p>
+        <mat-form-field>
+            <input matInput placeholder="DEVOLVER" type="text" [formControl]="form.controls['return']" required>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+        <button mat-button [mat-dialog-close]>Volver atrás</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Devolver</button>
+    </div>
+</form>

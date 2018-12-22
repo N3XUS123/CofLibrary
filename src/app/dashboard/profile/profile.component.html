@@ -1,0 +1,97 @@
+<div class="wrapper" fxLayout="row wrap">
+  <div fxFlex="100" fxLayout.gt-sm="row" fxLayout="column">
+    <mat-card fxFlex.gt-sm="30" fxFlex="100">
+      <mat-card-header>
+        <mat-card-title>Datos de usuario</mat-card-title>
+        <mat-card-subtitle>Aquí podrás ver y gestionar tu perfil personal</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column">
+          <div fxFlex="100" style="overflow: hidden; text-align: center">
+            <figure>
+              <div class="text-xs-center">
+                <img src="https://ui-avatars.com/api/?name={{user.name}}&rounded=true&size=115px" alt="Imagen de perfil"
+                  class="radius-circle">
+              </div>
+            </figure>
+            <h1 class="ma-0">{{user.name}}</h1>
+            <small *ngIf="user.role==='admin'">Administrador</small>
+            <small *ngIf="user.role!='admin'">Usuario general</small>
+          </div>
+          <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between">
+            <p class="block mt-xs mb-xs text-icon">
+              <mat-icon>email</mat-icon> <span>{{user.email}}</span>
+            </p>
+            <p class="block mt-xs mb-xs text-icon">
+              <mat-icon>smartphone</mat-icon> <span *ngIf="user.phone">{{user.phone}}</span> <span *ngIf="!user.phone">
+                Sin telefono</span>
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex.gt-sm="35" fxFlex="100">
+      <mat-card-header>
+        <mat-card-title>Editar perfil</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="profForm" (ngSubmit)="onProfileSubmit()">
+        <mat-card-content fxLayout="column">
+          <mat-form-field>
+            <input matInput placeholder="Nombre" type="text" [formControl]="profForm.controls['name']" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" type="text" [formControl]="profForm.controls['email']" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Telefono" type="tel" [formControl]="profForm.controls['phone']" required>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayout="column" class="ma-0">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!profForm.valid">Editar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+    <mat-card fxFlex.gt-sm="35" fxFlex="100">
+      <mat-card-header>
+        <mat-card-title>Cambiar contraseña</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="passForm" (ngSubmit)="onPasswordSubmit()">
+        <mat-card-content fxLayout="column">
+          <mat-form-field>
+            <input matInput placeholder="Antigua contraseña" type="password" [formControl]="passForm.controls['password']">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Contraseña" type="text" [formControl]="passForm.controls['newpassword']">
+            <a mat-button matSuffix mat-icon-button (click)="passwordAutogen()">
+              <mat-icon>lock</mat-icon>
+            </a>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Confirmar contraseña" type="text" [formControl]="passForm.controls['checkpassword']">
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayout="column" class="ma-0">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!passForm.valid">Cambiar contraseña</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+  <mat-card fxFlex="100%">
+    <mat-card-header>
+      <mat-card-title>Mis recursos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" class="pl-3 pr-3" *ngIf="user.recursos">
+      <h4 *ngIf="!user.recursos[0]" class="font-weight-bold">No tienes ningún recurso en estos momentos.</h4>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let resource of user.recursos">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{resource.title}} </mat-panel-title>
+            <mat-panel-description> {{resource.autor}} | {{resource.anyo}} </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{resource.content}}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+
+</div>
